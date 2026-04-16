@@ -8,11 +8,14 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    # Adicione estas duas linhas abaixo para forçar o uso do Node 24 nas Actions
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version: 18 # Seu projeto continua testando no Node 18 normalmente
     - name: Install dependencies
       run: npm install
     - name: Install Playwright Browsers
